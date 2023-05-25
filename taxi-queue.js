@@ -1,7 +1,7 @@
-function TaxiQueue() {
+function TaxiQueue(passengers,taxis) {
 
-	let passengerQueue = 0 ;
-	let taxisQueue = 0 ;
+	let passengerQueue = passengers || 0 ;
+	let taxisQueue = taxis || 0 ;
 
 	function joinQueue() {
 		passengerQueue++;
@@ -24,9 +24,15 @@ function TaxiQueue() {
 	}
 
 	function taxiDepart(){
-		if(passengerQueue>=12 && taxisQueue > 0 ){
-			passengerQueue -=12;
-			taxisQueue--;
+		if(passengerQueue>=12){
+			if(taxisQueue > 0 ){
+				passengerQueue -=12;
+				taxisQueue--;
+			}else{
+				return "not enough taxis" ;
+			}
+		}else{
+			return "taxi  not full" ;
 		}
 	}
 
