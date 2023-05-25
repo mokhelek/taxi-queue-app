@@ -1,29 +1,40 @@
 function TaxiQueue() {
 
+	let passengerQueue = 0 ;
+	let taxisQueue = 0 ;
 
 	function joinQueue() {
-
+		passengerQueue++;
 	}
 
 	function leaveQueue() {
-
-	}
-
-	function joinTaxiQueue() {
-
+		if(passengerQueue>=1){
+			passengerQueue--;
+		}
 	}
 
 	function queueLength() {
-
+		return passengerQueue;
 	}
 
-	function taxiQueueLength() {
+	
 
+	function joinTaxiQueue() {
+		taxisQueue++;
 	}
 
 	function taxiDepart(){
-
+		if(passengerQueue>=12 && taxisQueue > 0 ){
+			passengerQueue -=12;
+			taxisQueue--;
+		}
 	}
+
+	function taxiQueueLength() {
+		return taxisQueue ;
+	}
+
+
 
 	return {
 		joinQueue,
