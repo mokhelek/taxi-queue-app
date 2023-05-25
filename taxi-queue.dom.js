@@ -26,6 +26,11 @@ const joinPassengerQueueBtn = document.querySelector(".join_queue") ;
 const leavePassengerQueueBtn = document.querySelector(".leave_queue") ;
 // ************************
 
+// ************ Error Messages **********************
+const noTaxis = document.querySelector(".no-taxis");
+const notFull = document.querySelector(".not-full");
+// *********************************************
+
 
 passengerQueueCount.innerHTML = taxiQueue.queueLength() ;
 taxiQueueCount.innerHTML = taxiQueue.taxiQueueLength() ;
@@ -37,10 +42,16 @@ taxiDepartBtn.addEventListener("click",function(){
 
     if(taxiQueue.taxiDepart() === "taxi  not full" || taxiQueue.taxiDepart() === "not enough taxis" ){
         if(taxiQueue.taxiDepart() === "taxi  not full" ){
-            alert("taxi not full")
+            notFull.style.display = "block";
+            setTimeout(function(){
+                notFull.style.display = "none";
+            },3000)
         }
         if(taxiQueue.taxiDepart() === "not enough taxis"){
-            alert("not enough taxis")
+            noTaxis.style.display = "block";
+            setTimeout(function(){
+                noTaxis.style.display = "none";
+            },3000)
         }
     }else{
         taxiQueueCount.innerHTML = taxiQueue.taxiQueueLength() ;
